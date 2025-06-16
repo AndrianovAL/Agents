@@ -5,3 +5,5 @@ langchain_community
 langchain_google_genai
 langgraph
 nltk
+wikipedia
+numexpr
