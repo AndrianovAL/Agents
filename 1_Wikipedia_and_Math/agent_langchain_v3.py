@@ -17,8 +17,8 @@ from langgraph.prebuilt.chat_agent_executor import AgentState
 from langgraph.graph import StateGraph
 from langchain_core.messages import get_buffer_string
 from nltk.tokenize import sent_tokenize, word_tokenize
-# import nltk
-# nltk.download(['punkt', 'punkt_tab'])
+import nltk
+nltk.download(['punkt', 'punkt_tab'])
 
 load_dotenv()  # Try to load local .env file (for local dev); silently skip if not found (for CI)
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")  # Get API key from environment
