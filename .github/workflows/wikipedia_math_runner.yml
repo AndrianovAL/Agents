@@ -1,0 +1,36 @@
+name: Wikipedia and Math Agent CI
+
+on:
+  push:
+    paths:
+      - '1_Wikipedia_and_Math/**'
+  pull_request:
+    paths:
+      - '1_Wikipedia_and_Math/**'
+
+jobs:
+  test-wikipedia-math-agent_v3:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 📥 Checkout repository code
+      uses: actions/checkout@v3
+
+    - name: 🐍 Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: 📦 Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r 1_Wikipedia_and_Math/requirements.txt
+
+    - name: ▶️ Run agent v1
+      run: python 1_Wikipedia_and_Math/agent_langchain_v1.py
+
+    - name: ▶️ Run agent v2
+      run: python 1_Wikipedia_and_Math/agent_langchain_v2.py
+
+    - name: ▶️ Run agent v3
+      run: python 1_Wikipedia_and_Math/agent_langchain_v3.py
