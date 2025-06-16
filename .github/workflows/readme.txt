@@ -1,10 +1,34 @@
 GitHub Action YAML file to automatically test and run 1_Wikipedia_and_Math project every time I push or create a pull request.
 
 Notes on potential improvements:
-1. Adjust if a project uses a .ipynb notebook or needs environment variables.
-2. Check output files, run tests, or save logs/artifacts.
-   Can parameterize it or run only changed scripts.
-3. Set up dependabot to auto-check and upgrade GitHub Actions safely - it's a best practice in production setups.
+1. Adjust if a project needs environment variables.
+	GitHub Actions won’t pick up .env file unless I configure it - right now it won’t work if my .py scripts rely on reading .env for API keys.
+	To fix that:
+		1. Add my API key as a GitHub secret (Settings → Secrets and variables → Actions → New repository secret) — e.g., OPENAI_API_KEY
+		2. Update the YAML to expose it like this:
+		    - name: ▶️ Run agent v3
+		      run: python 1_Wikipedia_and_Math/agent_langchain_v3.py
+		      env:
+		        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+2. GitHub Actions only runs .yml or .yaml files, so it's OK to add to the .GitHub/
+3. Save outputs as artifacts
+   Check output files
+   Save logs
+   Add test logs
+   Add test assertions
+   Run tests
+4. Can parameterize it or limit runs only to modified scripts (e.g., only run v2 if it changed)
+5. Set up dependabot to auto-check and upgrade GitHub Actions safely - it's a best practice in production setups.
+6. Adjust if a project uses a .ipynb notebook to run it.
+7-10.
+| Feature             | Benefit                                       | How to Add                                           |
+| ------------------- | --------------------------------------------- | ---------------------------------------------------- |
+| ✅ Matrix testing    | Run against multiple Python versions          | Add a `strategy.matrix` block                        |
+| ✅ Linting           | Auto check code quality (e.g., flake8, black) | Add a step with `pip install flake8` then `flake8 .` |
+| ✅ Test framework    | Move logic to unit tests (pytest)             | Refactor agents into testable functions + use pytest |
+| ✅ Artifacts or logs | Upload results or logs for inspection         | Use `actions/upload-artifact`                        |
+
+
 
 ___Info:
 | Line                              | Purpose                                                                           |

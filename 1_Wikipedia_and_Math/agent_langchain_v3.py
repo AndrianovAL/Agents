@@ -3,6 +3,7 @@
 # - search Wikipedia
 # - execute simple math.
 # Example: the agent computes what (3 * AverageDogAge) equals to.
+# I also Triggering CI test for v3
 # ===========================================================================================
 
 from dotenv import load_dotenv
@@ -19,8 +20,12 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 # import nltk
 # nltk.download(['punkt', 'punkt_tab'])
 
-load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")  # Load Gemini API key
+load_dotenv()  # Try to load local .env file (for local dev); silently skip if not found (for CI)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")  # Get API key from environment
+if GEMINI_API_KEY is None:
+    raise ValueError("❌ GEMINI_API_KEY not found. Make sure it's in your .env file or set as a GitHub Action secret.")
+else:
+    print("✅ GEMINI_API_KEY loaded successfully (not printing it for security).")
 
 # 1. SETUP LLM
 llm = ChatGoogleGenerativeAI(
