@@ -7,7 +7,7 @@ on:
   pull_request:
     paths:
       - '1_Wikipedia_and_Math/**'
-workflow_dispatch:  # 👈 this enables manual runs
+  workflow_dispatch:  # 👈 this enables manual runs
 
 jobs:
   test-wikipedia-math-agent_v3:
