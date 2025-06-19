@@ -83,11 +83,11 @@ Example:
 
 ## Summary Table
 
-| Feature       | Description                                      | Value for You                                |
-|---------------|--------------------------------------------------|----------------------------------------------|
-| **CI/CD**     | Auto-runs scripts/tests on push/PR               | Validates each agent project automatically   |
-| **Notebook runner** | Auto-executes `.ipynb` files              | Ensures notebooks stay reproducible          |
-| **GitHub Actions** | Platform to host both                      | Free, flexible, works seamlessly with GitHub |
+| Feature             | Description                        | Value for You                                |
+|---------------------|------------------------------------|----------------------------------------------|
+| **CI/CD**           | Auto-runs scripts/tests on push/PR | Validates each agent project automatically   |
+| **Notebook runner** | Auto-executes `.ipynb` files       | Ensures notebooks stay reproducible          |
+| **GitHub Actions**  | Platform to host both              | Free, flexible, works seamlessly with GitHub |
 
 ---
 
