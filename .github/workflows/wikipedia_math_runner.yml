@@ -30,15 +30,15 @@ jobs:
     - name: ▶️ Run agent v1
       run: python 1_Wikipedia_and_Math/agent_langchain_v1.py
       env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
 
 
     - name: ▶️ Run agent v2
       run: python 1_Wikipedia_and_Math/agent_langchain_v2.py
       env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
 
     - name: ▶️ Run agent v3
       run: python 1_Wikipedia_and_Math/agent_langchain_v3.py
       env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        GEMINI_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
