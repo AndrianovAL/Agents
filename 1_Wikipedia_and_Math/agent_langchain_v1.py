@@ -18,12 +18,12 @@ from langchain.agents import AgentType
 
 # load API_KEY
 load_dotenv()  # load my Google Gemini key from .env file into environment
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")  # get Gemini key from environment
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")  # get Gemini key from environment
 
 
 def langchain_agent(user_query="What is the average dog age? Multiply it by 3."):
     llm = GoogleGenerativeAI(
-        google_api_key=GEMINI_API_KEY, model="gemini-2.0-flash",
+        google_api_key=GOOGLE_API_KEY, model="gemini-2.0-flash",
         temperature=0.5,
         max_tokens=1_000)
     tools = load_tools(["wikipedia", "llm-math"], llm=llm)

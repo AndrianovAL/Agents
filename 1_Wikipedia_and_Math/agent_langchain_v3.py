@@ -21,15 +21,15 @@ import nltk
 nltk.download(['punkt', 'punkt_tab'])
 
 load_dotenv()  # Try to load local .env file (for local dev); silently skip if not found (for CI)
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")  # Get API key from environment
-if GEMINI_API_KEY is None:
-    raise ValueError("❌ GEMINI_API_KEY not found. Make sure it's in your .env file or set as a GitHub Action secret.")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")  # Get API key from environment
+if GOOGLE_API_KEY is None:
+    raise ValueError("❌ GOOGLE_API_KEY not found. Make sure it's in your .env file or set as a GitHub Action secret.")
 else:
-    print("✅ GEMINI_API_KEY loaded successfully (not printing it for security).")
+    print("✅ GOOGLE_API_KEY loaded successfully (not printing it for security).")
 
 # 1. SETUP LLM
 llm = ChatGoogleGenerativeAI(
-    google_api_key=GEMINI_API_KEY,
+    google_api_key=GOOGLE_API_KEY,
     model="gemini-2.0-flash",
     temperature=0.3,
     max_tokens=1024,
@@ -65,17 +65,18 @@ workflow.set_finish_point("agent")
 graph = workflow.compile()
 
 if __name__ == "__main__":
-    # 6. RUN
-    user_query = "What is the average dog age? Multiply it by 3."
-    response = graph.invoke(
-        {"messages": [("user", user_query)]}
-        )
+    # # 6. RUN
+    # user_query = "What is the average dog age? Multiply it by 3."
+    # response = graph.invoke(
+    #     {"messages": [("user", user_query)]}
+    #     )
 
-    # 7. INTERPRET RESPONSE
-    # Safely extract all message content
-    final_agent_message = get_buffer_string(response["messages"])
-    print("\nFinal Agent Message:\n", final_agent_message)
+    # # 7. INTERPRET RESPONSE
+    # # Safely extract all message content
+    # final_agent_message = get_buffer_string(response["messages"])
+    # print("\nFinal Agent Message:\n", final_agent_message)
 
-    # 7. EXTRACT THE ANSWER
-    print("\n___Final Agent Message:\n", sent_tokenize(final_agent_message)[-1])
-    print("\n___Answer:", word_tokenize(final_agent_message)[-2])
+    # # 7. EXTRACT THE ANSWER
+    # print("\n___Final Agent Message:\n", sent_tokenize(final_agent_message)[-1])
+    # print("\n___Answer:", word_tokenize(final_agent_message)[-2])
+    print('hi')

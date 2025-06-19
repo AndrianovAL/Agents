@@ -16,9 +16,9 @@ from langchain.agents import initialize_agent, AgentType
 
 # load API_KEY from .env file; initialize LLM
 load_dotenv()  # load my Google Gemini key from .env file into environment
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")  # get Gemini key from environment
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")  # get Gemini key from environment
 llm = GoogleGenerativeAI(
-    google_api_key=GEMINI_API_KEY,
+    google_api_key=GOOGLE_API_KEY,
     model="gemini-2.0-flash",
     temperature=0.2,
     max_tokens=500)

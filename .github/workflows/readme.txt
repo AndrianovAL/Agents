@@ -27,8 +27,8 @@ Notes on potential improvements:
 | ✅ Linting           | Auto check code quality (e.g., flake8, black) | Add a step with `pip install flake8` then `flake8 .` |
 | ✅ Test framework    | Move logic to unit tests (pytest)             | Refactor agents into testable functions + use pytest |
 | ✅ Artifacts or logs | Upload results or logs for inspection         | Use `actions/upload-artifact`                        |
-
-
+11. Can set up each project to explicitly load the root .env (useful for more control).
+12. Can use multiple .env files (.env.dev, .env.test, .env.prod etc.).
 
 ___Info:
 | Line                              | Purpose                                                                           |
